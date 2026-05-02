@@ -82,7 +82,7 @@ Rules:
           console.error("Failed to parse Gemini response:", rawText);
           return res
             .status(502)
-            .json({ error: "Could not parse AI response. Try again." });
+            .json({ error: "Could not parse AI response. Please try again." });
         }
       } else {
         console.error("No JSON found in Gemini response:", rawText);

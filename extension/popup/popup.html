@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Page Summarizer</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect width="20" height="20" rx="6" fill="#635bff" />
+            <path
+              d="M5 7h10M5 10h7M5 13h8"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+          <span class="logo-text">AI Summarizer</span>
+        </div>
+        <button
+          class="btn-clear"
+          id="clearBtn"
+          title="Clear summary"
+          aria-label="Clear summary"
+          hidden
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M1 1l12 12M13 1L1 13"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </header>
+
+      <div class="page-info">
+        <p class="page-title" id="pageTitle">Loading page...</p>
+      </div>
+
+      <div class="state" id="idleState">
+        <button class="btn-summarize" id="summarizeBtn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M2 4h12M2 8h8M2 12h10"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+          Summarize Page
+        </button>
+      </div>
+
+      <div class="state" id="loadingState" hidden>
+        <div class="spinner" aria-label="Summarizing..."></div>
+        <p class="loading-text">Summarizing page...</p>
+      </div>
+
+      <div class="state" id="errorState" hidden>
+        <div class="error-box" role="alert">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="7" stroke="#ef4444" stroke-width="1.5" />
+            <path
+              d="M8 5v4M8 11v.5"
+              stroke="#ef4444"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+          <p class="error-text" id="errorText">Something went wrong.</p>
+        </div>
+        <button class="btn-summarize" id="retryBtn">Try Again</button>
+      </div>
+
+      <div class="state" id="summaryState" hidden>
+        <div class="summary-scroll">
+          <div class="meta-row">
+            <div class="meta-badges">
+              <span class="meta-badge" id="readingTime"></span>
+              <span class="meta-badge" id="wordCount"></span>
+            </div>
+            <button
+              class="btn-copy"
+              id="copyBtn"
+              title="Copy summary"
+              aria-label="Copy summary"
+            >
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <rect
+                  x="4"
+                  y="4"
+                  width="8"
+                  height="8"
+                  rx="1.5"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                />
+                <path
+                  d="M1 9V2a1 1 0 011-1h7"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              Copy
+            </button>
+          </div>
+
+          <section class="section">
+            <h2 class="section-title">Summary</h2>
+            <ul class="bullet-list" id="bulletList"></ul>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Key Insights</h2>
+            <ul class="insight-list" id="insightList"></ul>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

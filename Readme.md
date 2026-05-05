@@ -87,7 +87,7 @@ ai-summarizer/
 ## AI Integration
 
 - **Model:** `gemini-2.5-flash`
-- **Prompt:** Instructs Gemini to return structured JSON with `bullets` and `insights` arrays
+- **Prompt:** Instructs Gemini to return structured JSON with `bullets` & `insights` arrays
 - **Response parsing:** JSON is extracted and validated before rendering
 - **Token limit:** Page content capped at 12,000 characters before sending to stay within model limits
 
